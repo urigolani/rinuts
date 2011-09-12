@@ -16,9 +16,8 @@ exports.runTest = function(testModule, testName, callback) {
 	///	 reasult as it's first argument
 	/// </param>
 	
-	var test = testModule[testName];
-		
-	if(test && typeof test === 'function'){
+	var test = testModule[testName];	
+	if(test && typeof test === 'function'){		
 		testRunner.run(testName, test, callback);
 	}
 }

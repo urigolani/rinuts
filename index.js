@@ -1,12 +1,20 @@
-var nodeunitWrapper = require('./NodeunitWrapper');
-var testSuite = require('./testSuite1');
+var services = {},
+	testService = null,
+	domain = "http:\/\/testservice-v1.anode.com";
 
-nodeunitWrapper.enumTests(testSuite, function(tests){	
-	tests.forEach(function(test){
-		console.log(test);	
-	});	
-});
+services.testService = require('./testService');
+testService = new services.testService(domain);
 
-nodeunitWrapper.runTest(testSuite, 'test2', function(testResult){	
-	console.log(testResult);	
-});
+// add test module
+testService.addModules([{name: 'Suite1', module: require('./testSuite1')}, {name: 'Suite2', module: require('./testSuite1')}]);
+
+// start listening
+testService.listen(process.argv[3]);
+
+
+
+
+
+
+
+
