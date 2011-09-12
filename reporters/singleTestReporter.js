@@ -1,6 +1,5 @@
 /*!
  * Nodeunit
- * MIT Licensed
  * This reporter performs a single test exection of a given test, and stores the result in a formatted 
  * 'result' object that has the following form:
 	{
@@ -15,23 +14,17 @@
 	}
  */
 
-/**
- * Module dependencies
- */
-
+//
+// Module dependencies
 var nodeunit = require('../node_modules/nodeunit/lib/nodeunit'),
     utils = require('../node_modules/nodeunit/lib/utils'),
     AssertionError = require('../node_modules/nodeunit/lib/assert').AssertionError;	
 
-/**
- * Run all tests within each module, accumulating the results in the local testResult object.
- *
- * @param {string} testName - the name of the test
- * @param {function} testMethod - the test method
- * @param {function} testEnd - callback that get the test result as a parameter and called when the test is done
- * @api public
- */
-
+//
+// Run all tests within each module, accumulating the results in the local testResult object.
+// testName {string} - the name of the test
+// testMethod {function} - the test method
+// testEnd {function}- callback that get the test result as a parameter and called when the test is done
 exports.run = function (testName, testMethod, testEnd) {
 	var testResult = {};
 
@@ -39,17 +32,17 @@ exports.run = function (testName, testMethod, testEnd) {
         testDone: function (name, assertions) {
             var formattedAssertion;			
 			
-			testResult.duration = assertions.duration;
-			// TODO --ADD ALL ASSERTIONS			
+			testResult.duration = assertions.duration;			
             testResult.success = !assertions.failures() ? true : false;
 			testResult.assertions = [];
 			assertions.forEach(function (a) {
 				formattedAssertion = {};				
 				// add test method, e.g, ok | fail etc..							
 				formattedAssertion.method = a.method;
-				
+				formattedAssertion.success = true;
 				if (a.failed()) {					
-					a = utils.betterErrors(a);		// FIGURE THIS OUT - IS IT NECESSARY?
+                    formattedAssertion.success = false;
+					a = utils.betterErrors(a);		
 					if (a.error){
 						if(a.error instanceof AssertionError && a.message) {
 							formattedAssertion.message = a.message;
@@ -60,8 +53,8 @@ exports.run = function (testName, testMethod, testEnd) {
 							formattedAssertion.stack = a.error.stack;						
 						}
 					}
-				}			
-				
+				}							
+                
 				testResult.assertions.push(formattedAssertion);				
 			});
         },
