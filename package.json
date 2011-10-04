@@ -3,9 +3,9 @@
     "author": "Uri Golani <urigolani@gmail.com>",    
     "description": "A service which allows to expose nodeunit based tests in a RESTful api for querying and running them, using http requests",
     "dependencies": {
-        "nodeunit": "0.5.4",
-        "express": ">= 2.4.6",
-        "mime": "1.2.1"
+        "mime": "1.2.1",
+		"nodeunit": "0.5.4",
+        "express": ">= 2.4.6"
     },
     "main": "index",
     "keywords": [ "nodeunit", "rest", "restful", "test" ],   

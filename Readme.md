@@ -20,7 +20,7 @@
     var services = {},
     testService = null;
     
-    services.rinuts = require('./rinuts');
+    services.rinuts = require('rinuts');
     testService = new services.rinuts();
 
     // add test modules
@@ -56,7 +56,11 @@
                 ...
             }
 
-    *	GET /tests/:testName : Returns an individual entry from the list above.
+    *	GET /tests/:testName : Returns an individual entry from the list above. has the form of:
+			{
+				"name": "*testName*",
+				"module": "*moduleName*",
+				"url": "/tests/*moduleName*/*testName*"}
     
     *	POST /tests/:testName : Executes the individual test and returns the test run summary, including stdout/err capture, in the following structure:            
             {
