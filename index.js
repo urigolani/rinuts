@@ -1,1 +1,1 @@
-module.exports = require('./lib/nodeunitDriver');
+module.exports = require('./lib/rinuts');
