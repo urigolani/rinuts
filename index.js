@@ -1,1 +1,1 @@
-module.exports = require('./lib/testService');
+module.exports = require('./lib/nodeunitDriver');

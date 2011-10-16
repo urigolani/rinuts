@@ -1,14 +1,8 @@
-var services = {},
-    testService = null;
-    
-services.testService = require('./../lib/testService');
-testService = new services.testService();
+var path = require('path'),
+    rinuts = require('./../index.js');
 
-// add test module
-testService.addModules([{name: 'Suite1', module: require('./testSuite1')}, {name: 'Suite2', module: require('./testSuite1')}]);
-
-// start listening
-testService.listen('9999');
+//rinuts.listen([path.resolve('testFold'), path.resolve('testSuite1.js')], 9999);
+rinuts.listen(require('./testSuite1'), 9999);
 
 
 
