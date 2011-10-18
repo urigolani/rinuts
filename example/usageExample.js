@@ -1,8 +1,18 @@
 var path = require('path'),
-    rinuts = require('./../index.js');
+    rinuts = require('./../index.js'),
+    driver = require('./mockRinutsDriver.js');
 
-//rinuts.listen([path.resolve('testFold'), path.resolve('testSuite1.js')], 9999);
-rinuts.listen(require('./testSuite1'), 9999);
+var mockdriver = new driver({
+    test1: {
+        name: 'test1',
+        method: function () {
+            return true;
+        }
+    }
+});
+
+var rinutsService = new rinuts(mockdriver);
+rinutsService.listen(9999);
 
 
 
