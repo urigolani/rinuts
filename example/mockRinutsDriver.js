@@ -12,8 +12,7 @@ driver.prototype = {
     enumTests: function (callback) {
         var tests = [],
             key;
-
-        console.log(this.tests.length);
+        
         for (key in this.tests) {
             if (this.tests.hasOwnProperty(key)) {
                 tests.push(this.tests[key].name);
