@@ -57,6 +57,6 @@
 			
 		Adding context to the request(Optional):		
 			HTTP-Headers: "Content-Type: application/json"
-			HTTP-Body: *context* - a JSON notated object
+			HTTP-Body: {"context": *whatEver*}" - a JSON notated object
 		
 		note - added context will override context supplied to the *ctor* of rinuts.
