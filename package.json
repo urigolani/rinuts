@@ -1,5 +1,5 @@
 {   "name": "rinuts",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Uri Golani <urigolani@gmail.com>",    
     "description": "A service which exposes tests through a RESTful api and allows for querying and running them, using http requests",
     "dependencies": {        

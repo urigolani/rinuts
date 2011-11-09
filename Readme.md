@@ -28,9 +28,10 @@
 
 ### Service API:
            
-    * *ctor*  (driver)
+    * *ctor*  (driver, context)
         Constructor. Loads a driver which implementes 'enumTests' and 'runTest'.
         [Argument] driver - The driver        
+		[Argument] context - (optional) An object being the context of each test run.         
     
 ### HTTP exposed API:
 
@@ -53,3 +54,9 @@
                 "name": *testName*,                
                 "state": *true|false*                
             }
+			
+		Adding context to the request(Optional):		
+			HTTP-Headers: "Content-Type: application/json"
+			HTTP-Body: *context* - a JSON notated object
+		
+		note - added context will override context supplied to the *ctor* of rinuts.
