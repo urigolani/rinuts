@@ -1,1 +1,1 @@
-module.exports = require('./lib/rinuts');
+ffdfdsmodule.exports = require('./lib/rinuts');
