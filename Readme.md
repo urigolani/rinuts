@@ -60,3 +60,19 @@
 			HTTP-Body: {"context": *whatEver*}" - a JSON notated object
 		
 		note - added context will override context supplied to the *ctor* of rinuts.
+
+
+### Driver interface:
+    
+    Drivers for rinuts should export the following methods inorder to enable 'rinuts' to 
+    enumarate the driver's tests as a reponse for 'GET' request and to run a speicific test per 'POST' request:
+     
+     *  'enumTests' (callback): applies *callback* on an array containing the tests to be exposed. each array element has the form:
+            {
+                name: *the name of the test*,
+                identifier: *the unique identifier of the test. will be appended to the test url in the get reponse, e.g, \tests\testoddnumbers*
+            }
+     *  'runTest' (identifier, callback, context) : runs the test matching 'identifier', with 'context' if supplied in the in the POST request,
+            and applies callback on the testresult.
+        
+        

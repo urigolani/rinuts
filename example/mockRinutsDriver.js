@@ -12,10 +12,13 @@ driver.prototype = {
     enumTests: function (callback) {
         var tests = [],
             key;
-        
+
         for (key in this.tests) {
             if (this.tests.hasOwnProperty(key)) {
-                tests.push(this.tests[key].name);
+                tests.push({
+                    name: this.tests[key].name,
+                    identifier: this.tests[key].name // the indentifier to appeneded to the get response, e.g \tests\testoddnumbers
+                });
             }
         }
 
